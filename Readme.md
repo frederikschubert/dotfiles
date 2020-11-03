@@ -7,6 +7,9 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ln ./zsh/.zshrc ~/.zshrc
-ln ./zsh/themes ~/.oh-my-zsh/custom/themes
-ln ./zsh/plugins ~/.oh-my-zsh/custom/plugins
+ln ./zsh/themes/oxide.zsh-theme ~/.oh-my-zsh/custom/themes/oxide.zsh-theme
+for plugin in ./zsh/plugins/*
+do
+ln -s $(realpath $plugin) ~/.oh-my-zsh/custom/plugins/$(basename $plugin)
+done
 ```
