@@ -62,7 +62,7 @@ else
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                           # This loads nvm
     [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion" # This loads nvm bash_completion
 
-    source ~/.iterm2_shell_integration.zs
+    source ~/.iterm2_shell_integration.zsh
     alias rsync="rsync -vaurz --info=progress2"
 fi
 
