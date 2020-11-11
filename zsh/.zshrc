@@ -64,6 +64,7 @@ else
 
     source ~/.iterm2_shell_integration.zsh
     alias rsync="rsync -vaurz --info=progress2"
+    export PIP_REQUIRE_VIRTUALENV=false
 fi
 
 export PATH="$HOME/local/bin:$JAVA_HOME/bin:$PATH"
