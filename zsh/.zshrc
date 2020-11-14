@@ -9,8 +9,9 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="oxide"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd.mm.yyyy"
-plugins=(z git zsh-autosuggestions fzf colored-man-pages)
+plugins=(z git zsh-autosuggestions fzf colored-man-pages aws)
 source $ZSH/oh-my-zsh.sh
+source ${HOME}/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 
 # User configuration
 export LANG=en_US.UTF-8
