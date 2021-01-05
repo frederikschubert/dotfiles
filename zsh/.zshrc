@@ -22,7 +22,7 @@ if [ "$IS_LINUX" = true ]; then
     export GOBIN="$GOPATH/bin"
     export PATH="$PATH:$GOROOT/bin:$GOBIN"
     export JAVA_HOME="$HOME/local/lib64/jvm/jdk-11"
-    export WANDB_DIR="/localstorage/schubert/wandb"
+    export WANDB_DIR="/localstorage/schubert"
     alias nv="nvidia-smi"
     # >>> conda initialize >>>
     __conda_setup="$('/home/schubert/miniconda3/tmp/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
