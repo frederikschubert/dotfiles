@@ -23,6 +23,7 @@ if [ "$IS_LINUX" = true ]; then
     export PATH="$PATH:$GOROOT/bin:$GOBIN"
     export JAVA_HOME="$HOME/local/lib64/jvm/jdk-11"
     export WANDB_DIR="/localstorage/schubert"
+    export WANDB_IGNORE_GLOBS="itr_*.pkl"
     alias nv="nvidia-smi"
     # >>> conda initialize >>>
     __conda_setup="$('/home/schubert/miniconda3/tmp/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
@@ -73,11 +74,12 @@ export PATH="$HOME/local/bin:$JAVA_HOME/bin:$PATH"
 export TMUX_TMPDIR="$HOME/.tmux/$(hostname)"
 mkdir -p $TMUX_TMPDIR
 
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
 export RPROMPT=$(hostname)
 
 fpath+=${HOME}/.oh-my-zsh/custom/plugins/conda-zsh-completion
+mkdir -p ${HOME}/.zsh-completions
+fpath+=${HOME}/.zsh-completions
 compinit conda
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
@@ -85,15 +87,23 @@ compinit conda
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" --no-ignore . "$1"
+    fd --hidden --follow --exclude ".git" --no-ignore . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" --no-ignore  . "$1"
+    fd --type d --hidden --follow --exclude ".git" --no-ignore . "$1"
+}
+
+gencomp() {
+    conda_env=$CONDA_DEFAULT_ENV
+    script=$1
+    filename=$script:t
+    ${CONDA_PREFIX}/bin/python $script -s zsh >${HOME}/.zsh-completions/_${filename}
+    source ~/.zshrc
+    conda activate $conda_env
 }
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude ".git"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
