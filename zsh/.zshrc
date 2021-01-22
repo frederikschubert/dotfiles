@@ -99,7 +99,7 @@ gencomp() {
     conda_env=$CONDA_DEFAULT_ENV
     script=$1
     filename=$script:t
-    ${CONDA_PREFIX}/bin/python $script -s zsh >${HOME}/.zsh-completions/_${filename}
+    ${CONDA_PREFIX}/bin/python $script --print-completion zsh >${HOME}/.zsh-completions/_${filename}
     source ~/.zshrc
     conda activate $conda_env
 }
