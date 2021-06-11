@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="oxide"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd.mm.yyyy"
-plugins=(z git zsh-autosuggestions fzf colored-man-pages aws)
+plugins=(vi-mode z git zsh-autosuggestions fzf colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 source ${HOME}/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 
@@ -55,11 +55,11 @@ else
     # <<< conda initialize <<<
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.2.jdk/Contents/Home"
     function coderf() {
-        code --file-uri "vscode-remote://ssh-remote+tntre/home/schubert/$1"
+        code --file-uri "vscode-remote://ssh-remote+tntilmarinen/home/schubert/$1"
     }
 
     function coderd() {
-        code --folder-uri "vscode-remote://ssh-remote+tntre/home/schubert/$1"
+        code --folder-uri "vscode-remote://ssh-remote+tntilmarinen/home/schubert/$1"
     }
     export NVM_DIR="$HOME/.nvm"
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                           # This loads nvm
@@ -74,8 +74,7 @@ export PATH="$HOME/local/bin:$JAVA_HOME/bin:$PATH"
 export TMUX_TMPDIR="$HOME/.tmux/$(hostname)"
 mkdir -p $TMUX_TMPDIR
 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
-export RPROMPT=$(hostname)
+
 
 fpath+=${HOME}/.oh-my-zsh/custom/plugins/conda-zsh-completion
 mkdir -p ${HOME}/.zsh-completions
@@ -103,6 +102,8 @@ gencomp() {
     source ~/.zshrc
     conda activate $conda_env
 }
+
+alias pythondbg="python -m debugpy --listen localhost:5678 --wait-for-client"
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude ".git"'
 

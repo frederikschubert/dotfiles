@@ -40,4 +40,10 @@ fi
 oxide_reset_color="%f"
 
 # Oxide prompt style.
-PROMPT=$'%{$oxide_limegreen%}%~%{$oxide_reset_color%} \n%(?.%{%F{white}%}.%{$oxide_red%})%(!.#.❯)%{$oxide_reset_color%} '
+PROMPT=$'%{$oxide_limegreen%}%~%{$oxide_reset_color%} on $FG[247]$(hostname)%{$oxide_reset_color%} \n%(?.%{%F{white}%}.%{$oxide_red%})%(!.#.❯)%{$oxide_reset_color%} '
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+MODE_INDICATOR="%F{yellow}+%f"
+RPROMPT=$(vi_mode_prompt_info)
